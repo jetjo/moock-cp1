@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    /* 应用于list-item类型的元素，包括设置了display:list-item的元素
+    覆盖从ul或ol继承的值 */
+    list-style: none;
+}
+
+/* 借助继承性，设置页面字体，除了a标签外 */
+body {
+    font: normal 14px/25px '微软雅黑';
+}
+
+header {
+
+}
+
+header .header-top {
+    width: 1200px;
+    margin: 0 auto;
+    /* 清除浮动 */
+    overflow: hidden;
+}
+
+header .header-top .logo {
+    float: left;
+    padding-top: 39px;
+    width: 192px;
+    height: 63px;
+}
+
+header .header-top .logo h1 {
+    width: 192px;
+    height: 63px;
+    /* background-color: orange; */
+}
+
+header .header-top .tool {
+    float: right;
+    width: 266px;
+    height: 67px;
+    padding-top: 35px;
+    /* background-color: green; */
+}
+
+header .header-top .tool .r1 {
+
+}
+
+header .header-top .tool .r1 .tel {
+    width: 32px;
+    height: 25px;
+}
+
+header .header-top .tool .r1 .tel-number {
+    display: inline-block;
+    width: 158px;
+    height: 26px;
+    font-size: 20px;
+    color: #00978E;
+    text-align: center;
+}
+
+header .header-top .tool .r1 .icon {
+    width: 24px;
+    height: 24px;
+}
+
+header .header-top .tool .r1 .chinese_icon {
+    margin-right: 10px;
+}
+
+header .header-top .tool .r2 {
+    width: 264px;
+    height: 28px;
+    border: 1px solid rgba(202, 202, 202, 0.60);
+}

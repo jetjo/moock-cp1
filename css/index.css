@@ -1,10 +1,32 @@
+/* 样式权限：用户定义的非继承样式 > 元素默认的样式，即浏览器添加的样式 > 用户定义的继承样式 > 元素默认的继承样式，即浏览器添加的继承样式 */
+/* 每一级权限里面important的样式权限最高，不论所属选择器权限如何，即使是用户定义的行内样式也不例外 */
 * {
     margin: 0;
     padding: 0;
+    /* 【VS：AD6N】通配符选择器权限低于状态伪元素选择器 */
+    /* outline: none; */
+    /* writing-mode: horizontal-tb; */
+}
+
+input {
+    /* 【VS：I1O5】元素选择器权限低于状态伪元素选择器 */
+    /* outline: none; */
+    /* 【VS：2EVJ】同一个选择器，书写顺序越后权限越高 */
+    font-size: medium;
+}
+input {
+    /* 【VS：2EVJ】同一个选择器，书写顺序越后权限越高 */
+    /* 【VS：8XV5】继承的选择器权限最低，甚至低于元素默认样式即用户代理为元素添加的样式，更低于元素选择器 */
+    font-size: medium;
 }
 
 a {
     text-decoration: none;
+}
+
+ul, ol {
+    /* 覆盖浏览器添加的应用于li的继承样式 */
+    list-style: none;
 }
 
 li {
@@ -18,9 +40,23 @@ body {
     font: normal 14px/25px '微软雅黑';
 }
 
-header {
+header {}
 
+:focus-visible {
+    /* 【VS：AD6N】通配符选择器权限低于状态伪元素选择器 */
+    /* 【VS：I1O5】元素选择器权限低于状态伪元素选择器 */
+    /* 权限高于浏览器为此选择器添加的样式 */
+    outline: none;
+    /* 覆盖了浏览器在input:focus-visible选择器中添加的outline-offset样式 */
+    outline-offset: 0px;
 }
+
+button:active {
+    /* 覆盖了浏览器在button:active选择器中添加的border-style样式 */
+    border-style: none;
+}
+
+input:focus-visible {}
 
 header .header-top {
     width: 1200px;
@@ -51,7 +87,10 @@ header .header-top .tool {
 }
 
 header .header-top .tool .r1 {
-
+    /* margin-bottom: 4.5px; */
+    display: flex;
+    align-items: center;
+    margin-bottom: 11px;
 }
 
 header .header-top .tool .r1 .tel {
@@ -68,17 +107,64 @@ header .header-top .tool .r1 .tel-number {
     text-align: center;
 }
 
-header .header-top .tool .r1 .icon {
+header .header-top .tool .r1 a {
+    /* display: flex;
+    align-items: center; */
     width: 24px;
     height: 24px;
 }
 
-header .header-top .tool .r1 .chinese_icon {
+header .header-top .tool .r1 a .icon {
+    width: 24px;
+    height: 24px;
+}
+
+header .header-top .tool .r1 a:first-of-type {
     margin-right: 10px;
+}
+header .header-top .tool .r1 a .chinese_icon {
+    /* margin-right: 10px; */
 }
 
 header .header-top .tool .r2 {
     width: 264px;
     height: 28px;
     border: 1px solid rgba(202, 202, 202, 0.60);
+    /* 【VS：8XV5】继承的选择器权限最低，甚至低于元素默认样式即用户代理为元素添加的样式，更低于元素选择器，即使添加important */
+    font-size: medium !important;
+}
+
+header .header-top .tool .r2 input {
+    float: left;
+    width: 224px;
+    height: 28px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    font-size: 16px !important;/*最高权限8*/
+    /* 在UI设计图里面，这是placeholder的颜色。。。
+    color: rgba(202, 202, 202, 0.60); */
+}
+
+header .header-top .tool .r2 button {
+    float: right;
+    width: 20px;
+    height: 20px;
+    /* 去掉默认背景色buttonface，因为要使用子元素图片替代背景，避免发生效果叠加 */
+    /* background-color: none;非法值 */
+    /* background-color: initial; */
+    background: none;
+    /* 覆盖浏览器在button:active选择器中添加的border-style样式 */
+    border: none;
+    /* 覆盖浏览器和用户在:focus-visible选择器中添加的outline样式 */
+    outline: none;
+    cursor: pointer;
+    /* 垂直居中，但是使用margin不妥，margin多用于与兄弟元素拉开距离，
+    并且也不方便设置水平方向的margin大于0，因为可能超出父盒子
+    margin: 4px 0; */
+
+    /* 相对定位最合适微调位置，实现垂直居中，和水平方向与父盒子拉开距离 */
+    position: relative;
+    top: 4px;
+    right: 4px;
 }

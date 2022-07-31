@@ -83,6 +83,10 @@ header .header-top .logo h1 {
     letter-spacing: .4rem;
 
     font-size: 2rem;
+
+    /* background-image: url(../images/avatar.jpg);
+
+    text-indent: -999rem; */
 }
 
 header .header-top .tool {
